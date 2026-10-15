@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Phase 8 legacy visual system lives in a component layer so Tailwind utilities
+   remain predictable and can intentionally override individual properties. */
+@import "./styles/phase8.css";
+@import "./styles/platform.css";
+
+@theme {
+  --font-display: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-serif-display: Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { min-width: 320px; }
+  button, input, textarea, select { font: inherit; }
+}

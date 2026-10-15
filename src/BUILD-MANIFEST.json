@@ -1,0 +1,22 @@
+{
+  "version": "phase-27",
+  "phases": [
+    19,
+    20,
+    21
+  ],
+  "cssFixes": [
+    "Tailwind v4 component-layer integration",
+    "legacy Phase 8 CSS preserved",
+    "responsive Phase 19-21 styles",
+    "motion-reduced support"
+  ],
+  "routes": [
+    "/ai",
+    "/design",
+    "/share",
+    "/c/:slug?embed=1"
+  ],
+  "cloud": "design JSONB column added to Supabase schema",
+  "buildVerification": "pending-local-dependency-install"
+}

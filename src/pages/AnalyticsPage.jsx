@@ -1,0 +1,6 @@
+import { Link } from 'react-router-dom';
+import BackgroundEffects from '../components/layout/BackgroundEffects';
+import PlatformNav from '../components/layout/PlatformNav';
+import styles from '../styles/features/FeaturePage.module.css';
+const metrics=[['👁️','Views','Total countdown page views'],['🧑','Unique','Privacy-friendly unique visitors'],['📤','Shares','Social/share actions'],['▣','QR scans','Campaign QR interactions'],['🧩','Embeds','Embedded widget impressions'],['🎯','Conversion','Creator → share → visit funnel']];
+export default function AnalyticsPage(){return <div><BackgroundEffects/><main className={`main-container ${styles.page}`}><PlatformNav/><section className="section-heading mx-auto mt-6 max-w-3xl text-center"><span className="eyebrow">PHASE 35 • ADVANCED ANALYTICS</span><h1>Understand what works.</h1><p>Analytics remain privacy-friendly and bounded. Detailed historical exports are available to Pro and Business accounts.</p></section><section className="mx-auto grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{metrics.map(([i,t,c])=><article className="countdown-card !m-0" key={t}><div className="event-icon">{i}</div><h2>{t}</h2><p className="event-description">{c}</p></article>)}</section><div className="mt-5 flex justify-center"><Link className="dashboard-link-btn" to="/dashboard">Open dashboard</Link></div></main></div>}

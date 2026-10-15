@@ -1,0 +1,1065 @@
+/* =========================================================
+   PLATFORM / CREATOR UI — PHASE 10–21
+   Mobile-first component layer.
+   Phase 8 remains the visual source of truth for the core
+   countdown screen; this file owns all newly-added pages.
+========================================================= */
+
+@layer components {
+  /* ---------- shared page shell ---------- */
+  .dashboard-page,
+  .explore-page,
+  .creator-studio,
+  .premium-page,
+  .ai-page,
+  .design-page,
+  .social-page {
+    --page-max-width: 1180px;
+    width: 100%;
+  }
+
+  .dashboard-page { --page-max-width: 1100px; }
+  .premium-page { --page-max-width: 900px; }
+
+  .phase-nav,
+  .quick-nav {
+    width: 100%;
+    max-width: 980px;
+    margin: 18px auto 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .phase-nav a,
+  .quick-nav a,
+  .tag-row button,
+  .template-row button,
+  .design-pills button {
+    min-height: 40px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.055);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 9px 13px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+
+  .phase-nav a:hover,
+  .quick-nav a:hover,
+  .tag-row button:hover,
+  .tag-row button.active,
+  .template-row button:hover,
+  .template-row button.active,
+  .design-pills button:hover,
+  .design-pills button.active {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.11);
+    border-color: var(--accent);
+  }
+
+  /* ---------- forms ---------- */
+  .create-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .form-row {
+    min-width: 0;
+  }
+
+  .create-card input,
+  .create-card textarea,
+  .create-card select,
+  .ai-card input,
+  .ai-card textarea,
+  .design-card input,
+  .design-card textarea,
+  .social-card input,
+  .social-card textarea,
+  .explore-controls input {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .create-card textarea,
+  .ai-card textarea,
+  .design-card textarea,
+  .social-card textarea {
+    width: 100%;
+    min-width: 0;
+    resize: vertical;
+  }
+
+  /* ---------- dashboard ---------- */
+  .dashboard-page > .section-heading {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 30px;
+  }
+
+  .dashboard-page > .section-heading h1 {
+    font-size: clamp(38px, 7vw, 64px);
+    margin-bottom: 12px;
+  }
+
+  .public-badge {
+    width: fit-content;
+    margin: 0 auto 14px;
+  }
+
+  .cloud-auth-card {
+    width: min(100%, 560px);
+    margin: 0 auto 35px;
+  }
+
+  .analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 25px;
+  }
+
+  .analytics-card {
+    min-width: 0;
+    padding: 22px 18px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--card);
+    backdrop-filter: blur(18px);
+  }
+
+  .analytics-card strong {
+    display: block;
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(135deg,var(--text),var(--accent-two));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .analytics-card span,
+  .dashboard-row span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .dashboard-panel {
+    width: 100%;
+    min-width: 0;
+    margin: 20px 0;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+  }
+
+  .dashboard-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+  }
+
+  .dashboard-row {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .dashboard-row > div:first-child {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .dashboard-row > div:first-child strong {
+    overflow-wrap: anywhere;
+  }
+
+  .dashboard-row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: flex-end;
+  }
+
+  .dashboard-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    max-width: 100%;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.07);
+    color: var(--text);
+    padding: 10px 15px;
+    border-radius: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .dashboard-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  /* ---------- explore ---------- */
+  .explore-hero {
+    max-width: 850px;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .explore-controls {
+    width: min(100%, 900px);
+    margin: 30px auto;
+  }
+
+  .explore-controls > input {
+    width: 100%;
+    min-height: 50px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .discover-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .discover-card {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: var(--card);
+    backdrop-filter: blur(18px);
+  }
+
+  .discover-card img,
+  .discover-icon {
+    width: 100%;
+    height: 150px;
+    flex: 0 0 150px;
+    object-fit: cover;
+  }
+
+  .discover-icon {
+    display: grid;
+    place-items: center;
+    font-size: 64px;
+    background: rgba(255,255,255,.05);
+  }
+
+  .discover-card > div:not(.discover-icon) {
+    min-width: 0;
+    padding: 18px;
+  }
+
+  .discover-card h2 {
+    margin: 5px 0 8px;
+    overflow-wrap: anywhere;
+  }
+
+  .discover-card p {
+    color: var(--muted);
+    min-height: 42px;
+    overflow-wrap: anywhere;
+  }
+
+  .discover-date {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .discover-card .event-action {
+    margin: auto 18px 18px;
+    text-align: center;
+  }
+
+  .empty-state {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--card);
+  }
+
+  .empty-state > span { font-size: 40px; }
+  .empty-state .create-countdown-btn { display: inline-flex; text-decoration: none; margin-top: 15px; }
+
+  /* ---------- Creator Studio ---------- */
+  .studio-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+    gap: 22px;
+    align-items: start;
+  }
+
+  .template-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .template-row button { font-size: 13px; }
+
+  .studio-preview {
+    position: sticky;
+    top: 20px;
+    min-width: 0;
+    overflow: hidden;
+    align-self: start;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--card);
+    text-align: center;
+    box-shadow: 0 20px 80px rgba(0,0,0,.18);
+  }
+
+  .studio-preview img {
+    display: block;
+    width: calc(100% + 56px);
+    max-width: none;
+    height: 180px;
+    object-fit: cover;
+    margin: -28px -28px 20px;
+  }
+
+  .studio-preview .preview-icon { font-size: 58px; margin: 12px; }
+  .studio-preview h2 { font-size: clamp(24px, 3vw, 30px); overflow-wrap: anywhere; }
+  .studio-preview p { color: var(--muted); overflow-wrap: anywhere; }
+
+  .preview-box {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin: 22px 0;
+    padding: 15px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.06);
+  }
+
+  .preview-box strong { font-size: 27px; color: var(--studio-accent, var(--accent)); }
+  .preview-box span { font-size: 9px; color: var(--muted); align-self: end; }
+
+  /* ---------- AI Creator ---------- */
+  .ai-page,
+  .design-page,
+  .social-page { width: 100%; }
+
+  .ai-grid,
+  .design-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+    gap: 22px;
+    align-items: start;
+  }
+
+  .ai-card,
+  .design-card,
+  .social-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 26px;
+    padding: 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 70px rgba(0,0,0,.14);
+  }
+
+  .ai-card h2,
+  .design-card h2,
+  .social-card h2 { line-height: 1.15; }
+
+  .ai-prompt {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .ai-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .ai-suggestions button {
+    max-width: 100%;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.05);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 8px 12px;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+    transition: .2s ease;
+  }
+
+  .ai-suggestions button:hover { border-color: var(--accent); background: rgba(255,255,255,.09); transform: translateY(-1px); }
+
+  .ai-result {
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 18px;
+    background: rgba(255,255,255,.04);
+  }
+
+  .ai-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .ai-result-grid > div {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255,255,255,.025);
+  }
+
+  .ai-result-grid small { display: block; color: var(--muted); font-size: 11px; margin-bottom: 4px; }
+  .ai-result-grid strong { display: block; overflow-wrap:anywhere; }
+
+  .ai-preview { position: sticky; top: 22px; }
+  .ai-preview-image,
+  .design-hero-image { display:block; width:100%; height:180px; object-fit:cover; border-radius:18px; margin-bottom:16px; }
+
+  /* ---------- Design Studio ---------- */
+  .design-controls { display: grid; gap: 18px; }
+
+  .design-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 12px;
+  }
+
+  .design-control {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255,255,255,.035);
+  }
+
+  .design-control label {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 8px;
+  }
+
+  .design-control input[type="color"] {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .design-pills { display:flex; flex-wrap:wrap; gap:8px; }
+  .design-pills button { text-transform:capitalize; }
+
+  .design-preview {
+    position: sticky;
+    top: 22px;
+    min-height: 520px;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    overflow: hidden;
+  }
+
+  .design-preview-card {
+    width: min(100%, 470px);
+    max-width: 100%;
+    padding: 32px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(10,15,30,.58);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 30px 100px rgba(0,0,0,.28);
+    color: white;
+    overflow: hidden;
+  }
+
+  .design-preview-card .preview-big { font-size: clamp(38px,6vw,66px); font-weight:900; line-height:1; }
+  .design-preview-card .preview-small { color:rgba(255,255,255,.7); margin-top:10px; overflow-wrap:anywhere; }
+
+  /* ---------- Social Studio ---------- */
+  .social-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 10px;
+  }
+
+  .social-action {
+    min-width: 0;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.05);
+    color: var(--text);
+    border-radius: 16px;
+    padding: 14px;
+    text-align: left;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+    transition: transform .2s ease,border-color .2s ease,background .2s ease;
+  }
+
+  .social-action:hover { transform: translateY(-2px); border-color: var(--accent); background: rgba(255,255,255,.09); }
+  .social-action small { color: var(--muted); }
+
+  .embed-box { margin-top: 18px; }
+  .embed-box textarea { width:100%; min-height:120px; resize:vertical; }
+
+  .social-preview-card {
+    min-width: 0;
+    display:grid;
+    grid-template-columns:120px minmax(0,1fr);
+    gap:16px;
+    align-items:center;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:16px;
+    background:rgba(255,255,255,.045);
+  }
+
+  .social-preview-card img,
+  .social-preview-card .placeholder {
+    width:120px;
+    height:90px;
+    object-fit:cover;
+    border-radius:14px;
+  }
+
+  .social-preview-card .placeholder { display:grid; place-items:center; background:rgba(255,255,255,.07); font-size:38px; }
+  .social-preview-card h3 { margin:0 0 5px; font-size:20px; overflow-wrap:anywhere; }
+  .social-preview-card p { margin:0; color:var(--muted); font-size:13px; overflow-wrap:anywhere; }
+  .social-url { font-size:12px; color:var(--muted); word-break:break-all; }
+
+  .ai-status,
+  .design-status,
+  .social-status { margin-top:12px; color:var(--muted); min-height:20px; overflow-wrap:anywhere; }
+
+  /* ---------- Premium ---------- */
+  .premium-card {
+    width: min(100%, 720px);
+    margin: 0 auto 30px;
+    padding: 36px;
+    border:1px solid var(--border);
+    border-radius:28px;
+    background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.04));
+    box-shadow:0 30px 100px rgba(0,0,0,.22);
+  }
+
+  .premium-badge { display:inline-flex; padding:7px 12px; border-radius:999px; background:linear-gradient(135deg,#f59e0b,#ec4899); color:white; font-weight:900; font-size:12px; }
+  .premium-card h2 { font-size:clamp(32px,5vw,42px); margin:18px 0 8px; overflow-wrap:anywhere; }
+  .premium-card > p { color:var(--muted); }
+  .premium-card ul { list-style:none; padding:0; margin:24px 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .premium-card li { min-width:0; padding:12px; border:1px solid var(--border); border-radius:12px; overflow-wrap:anywhere; }
+  .premium-card small { display:block; color:var(--muted); margin-top:10px; overflow-wrap:anywhere; }
+
+  /* ---------- Public countdown ---------- */
+  .public-countdown-page .main-container { padding-top:70px; }
+  .public-countdown-page .countdown-card { margin-top:10px; }
+  .embed-mode .main-container { padding-top:24px; padding-bottom:24px; }
+  .embed-mode .public-badge,
+  .embed-mode .event-actions,
+  .embed-mode .footer-text { display:none; }
+  .embed-mode .countdown-card { margin:0 auto; box-shadow:none; }
+
+  /* ---------- QR ---------- */
+  .qr-share-box {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-top:18px;
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+  }
+
+  .qr-share-box canvas { width:170px !important; height:170px !important; max-width:100%; border-radius:10px; background:white; padding:5px; }
+
+
+
+  /* =====================================================
+     FINAL RESPONSIVE / THEME POLISH
+     Keep platform pages bounded on large screens and make
+     the light theme readable without changing Phase 8's
+     countdown visual language.
+  ===================================================== */
+
+  .main-container.creator-studio,
+  .main-container.ai-page,
+  .main-container.design-page,
+  .main-container.social-page {
+    width: min(100%, 1180px);
+    max-width: 1180px;
+  }
+
+  .main-container.explore-page {
+    width: min(100%, 1160px);
+    max-width: 1160px;
+  }
+
+  .main-container.dashboard-page {
+    width: min(100%, 1100px);
+    max-width: 1100px;
+  }
+
+  .main-container.premium-page {
+    width: min(100%, 980px);
+    max-width: 980px;
+  }
+
+  .creator-studio .section-heading,
+  .ai-page .section-heading,
+  .design-page .section-heading,
+  .social-page .section-heading,
+  .explore-page .section-heading,
+  .dashboard-page .section-heading,
+  .premium-page .section-heading {
+    color: var(--text);
+  }
+
+  .creator-studio .section-heading h1,
+  .ai-page .section-heading h1,
+  .design-page .section-heading h1,
+  .social-page .section-heading h1,
+  .explore-page .section-heading h1,
+  .dashboard-page .section-heading h1,
+  .premium-page .section-heading h1 {
+    color: var(--text);
+    text-shadow: 0 1px 18px rgba(0,0,0,.12);
+  }
+
+  .creator-studio .section-heading p,
+  .ai-page .section-heading p,
+  .design-page .section-heading p,
+  .social-page .section-heading p,
+  .explore-page .section-heading p,
+  .dashboard-page .section-heading p,
+  .premium-page .section-heading p {
+    color: var(--muted);
+  }
+
+  /* Light mode: never use translucent white as the only contrast layer. */
+  body.light .phase-nav a,
+  body.light .quick-nav a,
+  body.light .tag-row button,
+  body.light .template-row button,
+  body.light .design-pills button,
+  body.light .dashboard-link-btn,
+  body.light .ai-suggestions button,
+  body.light .social-action {
+    background: rgba(255,255,255,.72);
+    border-color: rgba(17,24,39,.14);
+    color: var(--text);
+    box-shadow: 0 5px 18px rgba(15,23,42,.06);
+  }
+
+  body.light .phase-nav a:hover,
+  body.light .quick-nav a:hover,
+  body.light .tag-row button:hover,
+  body.light .tag-row button.active,
+  body.light .template-row button:hover,
+  body.light .template-row button.active,
+  body.light .design-pills button:hover,
+  body.light .design-pills button.active,
+  body.light .ai-suggestions button:hover,
+  body.light .social-action:hover {
+    background: rgba(255,255,255,.94);
+    border-color: color-mix(in srgb, var(--accent) 55%, #64748b);
+  }
+
+  body.light .create-card,
+  body.light .ai-card,
+  body.light .design-card,
+  body.light .social-card,
+  body.light .dashboard-panel,
+  body.light .empty-state,
+  body.light .discover-card,
+  body.light .analytics-card,
+  body.light .premium-card,
+  body.light .studio-preview {
+    background: rgba(255,255,255,.72);
+    border-color: rgba(15,23,42,.12);
+    box-shadow: 0 18px 55px rgba(15,23,42,.09);
+  }
+
+  body.light .design-control,
+  body.light .ai-result,
+  body.light .ai-result-grid > div,
+  body.light .social-preview-card,
+  body.light .qr-share-box {
+    background: rgba(255,255,255,.58);
+    border-color: rgba(15,23,42,.12);
+  }
+
+  body.light .create-card input,
+  body.light .create-card textarea,
+  body.light .create-card select,
+  body.light .ai-card input,
+  body.light .ai-card textarea,
+  body.light .design-card input,
+  body.light .design-card textarea,
+  body.light .social-card input,
+  body.light .social-card textarea,
+  body.light .explore-controls > input {
+    background: rgba(255,255,255,.78);
+    color: var(--text);
+    border-color: rgba(15,23,42,.16);
+  }
+
+  body.light .create-card input::placeholder,
+  body.light .create-card textarea::placeholder,
+  body.light .ai-card input::placeholder,
+  body.light .ai-card textarea::placeholder,
+  body.light .design-card input::placeholder,
+  body.light .design-card textarea::placeholder,
+  body.light .social-card input::placeholder,
+  body.light .social-card textarea::placeholder,
+  body.light .explore-controls > input::placeholder {
+    color: #64748b;
+    opacity: 1;
+  }
+
+  body.light .discover-icon,
+  body.light .preview-box,
+  body.light .social-preview-card .placeholder {
+    background: rgba(15,23,42,.055);
+  }
+
+  /* Phase 8 shared sections also need the same light-mode treatment. */
+  body.light .platform-tools,
+  body.light .create-section,
+  body.light .upcoming-section,
+  body.light .my-countdowns-section {
+    color: var(--text);
+  }
+
+  body.light .tool-card,
+  body.light .event-card,
+  body.light .create-card,
+  body.light .my-countdown-card {
+    background: rgba(255,255,255,.72);
+    border-color: rgba(15,23,42,.12);
+    color: var(--text);
+    box-shadow: 0 18px 55px rgba(15,23,42,.08);
+  }
+
+  body.light .tool-card small,
+  body.light .event-card p,
+  body.light .create-section .section-heading p,
+  body.light .upcoming-section .section-heading p,
+  body.light .my-countdowns-section .section-heading p {
+    color: var(--muted);
+  }
+
+  body.light .tool-icon {
+    background: rgba(15,23,42,.06);
+  }
+
+  body.light .create-section input,
+  body.light .create-section textarea,
+  body.light .create-section select,
+  body.light .my-countdowns-toolbar {
+    background: rgba(255,255,255,.78);
+    color: var(--text);
+    border-color: rgba(15,23,42,.14);
+  }
+
+  body.light .my-countdowns-toolbar span {
+    color: var(--muted);
+  }
+
+  /* If a user has a dark custom background while using day mode, keep
+     platform copy readable instead of relying on inherited dark text. */
+  body.light.custom-background .platform-tools,
+  body.light.custom-background .create-section,
+  body.light.custom-background .upcoming-section,
+  body.light.custom-background .my-countdowns-section {
+    text-shadow: 0 1px 12px rgba(255,255,255,.18);
+  }
+
+  body.light .dashboard-row {
+    border-color: rgba(15,23,42,.10);
+  }
+
+  body.light .premium-card li {
+    background: rgba(255,255,255,.52);
+    border-color: rgba(15,23,42,.11);
+  }
+
+  /* Keep native controls readable in Chrome/Android light mode. */
+  body.light input[type="date"],
+  body.light input[type="time"],
+  body.light select {
+    color-scheme: light;
+  }
+
+  body:not(.light) input,
+  body:not(.light) textarea,
+  body:not(.light) select {
+    color-scheme: dark;
+  }
+
+  /* Prevent any child from creating accidental horizontal overflow. */
+  .creator-studio,
+  .ai-page,
+  .design-page,
+  .social-page,
+  .explore-page,
+  .dashboard-page,
+  .premium-page,
+  .studio-layout,
+  .ai-grid,
+  .design-grid,
+  .discover-grid {
+    min-width: 0;
+  }
+
+  .studio-layout > *,
+  .ai-grid > *,
+  .design-grid > * {
+    min-width: 0;
+  }
+
+  @media (min-width: 1200px) {
+    .main-container.creator-studio,
+    .main-container.ai-page,
+    .main-container.design-page,
+    .main-container.social-page {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .studio-layout,
+    .ai-grid,
+    .design-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .studio-preview,
+    .ai-preview,
+    .design-preview {
+      position: relative;
+      top: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main-container.creator-studio,
+    .main-container.ai-page,
+    .main-container.design-page,
+    .main-container.social-page,
+    .main-container.explore-page,
+    .main-container.dashboard-page,
+    .main-container.premium-page {
+      width: 100%;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .phase-nav,
+    .quick-nav {
+      max-width: 100%;
+    }
+
+    .phase-nav a,
+    .quick-nav a {
+      flex: 0 0 auto;
+    }
+
+    .create-card,
+    .ai-card,
+    .design-card,
+    .social-card,
+    .studio-preview {
+      width: 100%;
+    }
+
+    .studio-preview img {
+      width: calc(100% + 44px);
+      max-width: none;
+    }
+
+    .social-actions,
+    .premium-card ul,
+    .design-row,
+    .ai-result-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .main-container.creator-studio,
+    .main-container.ai-page,
+    .main-container.design-page,
+    .main-container.social-page,
+    .main-container.explore-page,
+    .main-container.dashboard-page,
+    .main-container.premium-page {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .phase-nav,
+    .quick-nav {
+      gap: 6px;
+    }
+
+    .phase-nav a,
+    .quick-nav a {
+      min-height: 36px;
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+
+    .template-row,
+    .design-pills,
+    .ai-suggestions,
+    .tag-row {
+      gap: 6px;
+    }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px) {
+    .discover-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .studio-layout { grid-template-columns: minmax(0,1fr); }
+    .studio-preview,
+    .ai-preview,
+    .design-preview { position:relative; top:auto; }
+    .ai-grid,
+    .design-grid { grid-template-columns:minmax(0,1fr); }
+  }
+
+  @media (max-width: 760px) {
+    .main-container.dashboard-page,
+    .main-container.explore-page,
+    .main-container.creator-studio,
+    .main-container.premium-page,
+    .main-container.ai-page,
+    .main-container.design-page,
+    .main-container.social-page { padding-top:72px; }
+
+    .phase-nav,
+    .quick-nav { margin:12px auto 22px; }
+    .phase-nav a,
+    .quick-nav a { min-height:38px; padding:8px 11px; font-size:13px; }
+
+    .analytics-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .dashboard-row { align-items:flex-start; flex-direction:column; }
+    .dashboard-row-actions { width:100%; justify-content:flex-start; }
+    .dashboard-panel-head { align-items:flex-start; flex-direction:column; }
+
+    .ai-card,
+    .design-card,
+    .social-card { border-radius:20px; padding:20px; }
+    .social-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .design-preview { min-height:430px; }
+    .studio-preview { padding:22px; }
+    .studio-preview img { width:calc(100% + 44px); margin:-22px -22px 18px; }
+  }
+
+  @media (max-width: 560px) {
+    .discover-grid { grid-template-columns:minmax(0,1fr); }
+    .design-row,
+    .ai-result-grid,
+    .social-actions,
+    .social-preview-card,
+    .premium-card ul { grid-template-columns:minmax(0,1fr); }
+
+    .dashboard-panel { padding:18px; }
+    .analytics-card { padding:17px 12px; }
+    .analytics-card strong { font-size:27px; }
+
+    .ai-card,
+    .design-card,
+    .social-card { padding:16px; }
+    .ai-preview-image,
+    .design-hero-image { height:150px; }
+    .design-preview { min-height:360px; padding:16px; }
+    .design-preview-card { padding:22px 16px; }
+
+    .social-preview-card { gap:12px; }
+    .social-preview-card img,
+    .social-preview-card .placeholder { width:100%; height:150px; }
+
+    .premium-card { padding:24px 18px; }
+    .template-row button { font-size:12px; padding:8px 10px; }
+  }
+
+  @media (max-width: 380px) {
+    .analytics-grid { grid-template-columns:minmax(0,1fr); }
+    .phase-nav,
+    .quick-nav { gap:6px; }
+    .phase-nav a,
+    .quick-nav a { font-size:12px; padding:7px 9px; }
+    .dashboard-footer-links .dashboard-link-btn { width:100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phase-nav a,
+    .quick-nav a,
+    .ai-suggestions button,
+    .social-action { transition:none; }
+  }
+}

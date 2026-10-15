@@ -1,0 +1,4 @@
+.particleFallback {
+  position: fixed;
+  pointer-events: none;
+}
